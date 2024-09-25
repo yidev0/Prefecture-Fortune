@@ -29,4 +29,12 @@ struct Prefecture_FortuneTests {
         }
     }
 
+    @Test func testTokenizer() {
+        let tokenizer = Tokenizer()
+        let tokenized = tokenizer.tokenize(text: "Hello, World!")
+        
+        #expect(tokenized.count == 2)
+        #expect(tokenized[0] == "Hello")
+        #expect(tokenized[1] == "World")
+    }
 }
