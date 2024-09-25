@@ -33,3 +33,21 @@ extension YearMonthDay {
         )
     }
 }
+
+extension FortuneRequest {
+    static let sample: Self = .init(
+        name: "ゆめみん",
+        birthday: .init(
+            year: 2000,
+            month: 1,
+            day: 27
+        ),
+        bloodType: "ab",
+        today: .init(
+            year: 2023,
+            month: 5,
+            day: 5
+        )
+    )
+        
+}
