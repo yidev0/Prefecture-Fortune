@@ -17,6 +17,7 @@ struct FortuneRequest: Codable {
     let name: String
     let birthday: YearMonthDay
     let bloodType: String
+    let bloodType: BloodType
     let today: YearMonthDay
 }
 
@@ -43,6 +44,7 @@ extension FortuneRequest {
             day: 27
         ),
         bloodType: "ab",
+        bloodType: .ab,
         today: .init(
             year: 2023,
             month: 5,
