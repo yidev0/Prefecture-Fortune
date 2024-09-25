@@ -14,11 +14,6 @@ struct FortuneResponse: Codable {
     let brief: String
 }
 
-struct MonthDay: Codable {
-    let month: Int
-    let day: Int
-}
-
 extension FortuneResponse {
     static let sample: Self = .init(
         name: "富山県",
