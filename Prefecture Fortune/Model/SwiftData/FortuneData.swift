@@ -24,3 +24,11 @@ final class FortuneData {
         self.date = date
     }
 }
+
+extension FortuneData {
+    static let sample = FortuneData(
+        request: .sample,
+        response: .sample,
+        date: .now
+    )
+}
