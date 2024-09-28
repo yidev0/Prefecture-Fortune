@@ -72,48 +72,15 @@ struct MainView: View {
                     .buttonStyle(.borderedProminent)
                 }
             }
-            
-            if let result = viewModel.fortuneResult {
-                Section {
-                    LabeledContent("Label.PrefectureName") {
-                        Text(result.name)
-                    }
-                    
-                    LabeledContent("Label.CapitalName") {
-                        Text(result.name)
-                    }
-                    
-                    if let citizenDay = result.citizenDay {
-                        LabeledContent("Label.CitizenDay") {
-                            Text(citizenDay.dateString)
-                        }
-                    }
-                    
-                    LabeledContent("Label.HasCoastline") {
-                        Text(result.hasCoastLine ? "Label.Yes" : "Label.No")
-                    }
-                    
-                    AsyncImage(url: URL(string: result.logoUrl)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                    }
-                    
-                    Text(result.brief)
-                        .foregroundStyle(.secondary)
-                } header: {
-                    Text("Label.FortuneResult")
-                }
-            }
         }
         .alert(
             isPresented: $viewModel.showAlert,
             error: viewModel.alertType
         ) {
             Button("OK") {}
+        }
+        .sheet(item: $viewModel.fortuneResult) { result in
+            ResultView(result: result)
         }
     }
 }
