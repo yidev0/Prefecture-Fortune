@@ -16,32 +16,38 @@ class MainViewModel {
     var bloodType: BloodType = .a
     
     // MARK: Outputs
+    var isFetching = false
     var fortuneResult: FortuneResponse?
     var alertType: AlertType?
     
     init() {}
     
-    func fetchFortune() async {
-        let fortuneResponse = await FortuneAPIClient().fetchResponse(
-            reqeust: .init(
-                name: name,
-                birthday: birthday.toYearMonthDay(),
-                bloodType: bloodType,
-                today: .today()
+    func fetchFortune() {
+        Task {
+            isFetching = true
+            let fortuneResponse = await FortuneAPIClient().fetchResponse(
+                reqeust: .init(
+                    name: name,
+                    birthday: birthday.toYearMonthDay(),
+                    bloodType: bloodType,
+                    today: .today()
+                )
             )
-        )
-        
-        switch fortuneResponse {
-        case .success(let success):
-            fortuneResult = success
-        case .failure(let failure):
-            switch failure {
-            case .invalidResponse:
-                alertType = .invalidData
-            case .invalidData:
-                alertType = .invalidData
-            case .invalidURL:
-                alertType = .invalidData
+            
+            isFetching = false
+            
+            switch fortuneResponse {
+            case .success(let success):
+                fortuneResult = success
+            case .failure(let failure):
+                switch failure {
+                case .invalidResponse:
+                    alertType = .invalidData
+                case .invalidData:
+                    alertType = .invalidData
+                case .invalidURL:
+                    alertType = .invalidData
+                }
             }
         }
     }
