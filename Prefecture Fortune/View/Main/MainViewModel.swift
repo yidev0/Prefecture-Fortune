@@ -18,7 +18,13 @@ class MainViewModel {
     // MARK: Outputs
     var isFetching = false
     var fortuneResult: FortuneResponse?
-    var alertType: AlertType?
+    
+    var alertType: AlertType? {
+        didSet {
+            showAlert = alertType != nil
+        }
+    }
+    var showAlert = false
     
     init() {}
     
@@ -47,6 +53,12 @@ class MainViewModel {
                     alertType = .invalidData
                 case .invalidURL:
                     alertType = .invalidData
+                case .networkError:
+                    alertType = .networkError
+                case .serverError:
+                    alertType = .serverError
+                case .undefined(statusCode: let statusCode):
+                    alertType = .undefined(statusCode: statusCode)
                 }
             }
         }

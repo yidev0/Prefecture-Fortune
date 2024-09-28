@@ -14,11 +14,12 @@ struct MainView: View {
     var body: some View {
         Form {
             Section {
-                LabeledContent("Label.name") {
+                LabeledContent("Label.Name") {
                     TextField(
                         "Label.Name",
                         text: $viewModel.name
                     )
+                    .multilineTextAlignment(.trailing)
                 }
                 
                 DatePicker(
@@ -85,6 +86,12 @@ struct MainView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+        }
+        .alert(
+            isPresented: $viewModel.showAlert,
+            error: viewModel.alertType
+        ) {
+            Button("OK") {}
         }
     }
 }
