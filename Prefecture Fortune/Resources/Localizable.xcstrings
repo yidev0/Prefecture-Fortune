@@ -246,6 +246,22 @@
         }
       }
     },
+    "Label.Reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "リセット"
+          }
+        }
+      }
+    },
     "Label.Yes" : {
       "localizations" : {
         "en" : {

@@ -59,6 +59,12 @@ struct ResultView: View {
                     Map(
                         position: $viewModel.cameraPosition
                     ) {
+                        if let coordinate = viewModel.capitalCoordinate {
+                            Marker(
+                                viewModel.fortuneResult.capital,
+                                coordinate: coordinate
+                            )
+                        }
                     }
                     .aspectRatio(1, contentMode: .fit)
                     .overlay(alignment: .topTrailing) {
@@ -81,6 +87,7 @@ struct ResultView: View {
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await viewModel.searchLocation()
+                await viewModel.searchCapital()
             }
         }
     }
