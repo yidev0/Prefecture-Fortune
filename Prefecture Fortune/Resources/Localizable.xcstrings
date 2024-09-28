@@ -91,13 +91,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tell Fortune"
+            "value" : "Tell Prefecture Fortune"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "占う"
+            "state" : "needs_review",
+            "value" : "相性のいい都道府県を占う"
           }
         }
       }
@@ -167,7 +167,7 @@
       }
     },
     "Label.Close" : {
-      "localizations" : {
+        "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -178,6 +178,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Label.EnterInformationForFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter information to tell fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報を入力すると占いができます"
           }
         }
       }
@@ -263,7 +279,7 @@
       }
     },
     "Label.Reset" : {
-      "localizations" : {
+        "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -274,6 +290,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リセット"
+          }
+        }
+      }
+    },
+    "Label.ResetInputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Inputs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力情報をリセット"
           }
         }
       }

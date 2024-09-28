@@ -12,7 +12,7 @@ import SwiftUI
 class MainViewModel {
     // MARK: Inputs
     var name: String = ""
-    var birthday: Date = .now
+    var birthday: Date = .createDate(year: 2000, month: 1, day: 1)!
     var bloodType: BloodType = .a
     
     // MARK: Outputs
@@ -67,5 +67,10 @@ class MainViewModel {
                 }
             }
         }
+    }
+    
+    func resetInputs() {
+        name = ""
+        birthday = .createDate(year: 2000, month: 1, day: 1)!
     }
 }
