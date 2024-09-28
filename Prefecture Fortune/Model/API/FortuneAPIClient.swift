@@ -42,13 +42,15 @@ struct FortuneAPIClient {
             }
             
             switch httpURLResponse.statusCode {
-            case 400:
+            case 200:
                 do {
                     let fortuneResponse = try JSONDecoder().decode(FortuneResponse.self, from: data)
                     return .success(fortuneResponse)
                 } catch {
                     return .failure(.invalidData)
                 }
+            case 400:
+                return .failure(.invalidData)
             case 500:
                 return .failure(.serverError)
             default:
