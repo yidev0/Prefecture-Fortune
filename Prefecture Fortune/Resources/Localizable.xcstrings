@@ -91,13 +91,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tell Fortune"
+            "value" : "Tell Prefecture Fortune"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "占う"
+            "state" : "needs_review",
+            "value" : "相性のいい都道府県を占う"
           }
         }
       }
