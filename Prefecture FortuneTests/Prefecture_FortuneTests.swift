@@ -10,8 +10,23 @@ import Testing
 
 struct Prefecture_FortuneTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test func testDefaultAPICall() {
+        Task {
+            let fortuneAPIClient = FortuneAPIClient()
+            let result = await fortuneAPIClient.fetchResponse(
+                reqeust: .sample
+            )
+            
+            var responseResult: FortuneResponse? = nil
+            switch result {
+            case .success(let response):
+                responseResult = response
+            case .failure:
+                break
+            }
+            
+            #expect(responseResult?.name == FortuneResponse.sample.name)
+        }
     }
 
 }
