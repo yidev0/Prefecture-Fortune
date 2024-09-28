@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 class MainViewModel {
@@ -72,5 +73,22 @@ class MainViewModel {
     func resetInputs() {
         name = ""
         birthday = .createDate(year: 2000, month: 1, day: 1)!
+    }
+    
+    func saveHistory(context: ModelContext) {
+        guard let fortuneResult else { return }
+        
+        let newData = FortuneData(
+            request: .init(
+                name: name,
+                birthday: birthday.toYearMonthDay(),
+                bloodType: bloodType,
+                today: .today()
+            ),
+            response: fortuneResult,
+            date: .now
+        )
+        
+        context.insert(newData)
     }
 }
