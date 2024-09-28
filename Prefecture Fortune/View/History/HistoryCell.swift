@@ -18,7 +18,9 @@ struct HistoryCell: View {
             
             HStack {
                 Text(data.request.name)
-                Text(data.request.name)
+                if let date = data.request.birthday.makeDate() {
+                    Text(date, format: .dateTime.year().month().day())
+                }
             }
             .font(.callout)
             .foregroundStyle(.secondary)
