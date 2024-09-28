@@ -24,6 +24,7 @@ struct HistoryView: View {
             ForEach(groupedItems.keys.sorted(), id: \.self) { key in
                 Section {
                     ForEach(groupedItems[key] ?? []) { item in
+                        HistoryCell(data: item)
                     }
                 } header: {
                     Text(
