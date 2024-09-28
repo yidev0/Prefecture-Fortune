@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
+    @Environment(\.modelContext) var modelContext
     @State private var viewModel = MainViewModel()
     
     var body: some View {
@@ -82,6 +83,9 @@ struct MainView: View {
             }
             .sheet(item: $viewModel.fortuneResult) { result in
                 ResultView(result: result)
+            }
+            .onChange(of: viewModel.fortuneResult?.id) {
+                viewModel.saveHistory(context: modelContext)
             }
         }
     }
