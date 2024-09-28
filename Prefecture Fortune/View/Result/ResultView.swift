@@ -27,7 +27,7 @@ struct ResultView: View {
                     }
                     
                     LabeledContent("Label.CapitalName") {
-                        Text(viewModel.fortuneResult.name)
+                        Text(viewModel.fortuneResult.capital)
                     }
                     
                     if let citizenDay = viewModel.fortuneResult.citizenDay {
