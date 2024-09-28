@@ -68,4 +68,9 @@ class MainViewModel {
             }
         }
     }
+    
+    func resetInputs() {
+        name = ""
+        birthday = .createDate(year: 2000, month: 1, day: 1)!
+    }
 }

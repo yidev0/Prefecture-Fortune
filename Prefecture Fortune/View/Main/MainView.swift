@@ -36,6 +36,13 @@ struct MainView: View {
                 } label: {
                     Text("Label.BloodType")
                 }
+                
+                Button(role: .destructive) {
+                    viewModel.resetInputs()
+                } label: {
+                    Text("Label.ResetInputs")
+                }
+                .disabled(viewModel.name.isEmpty)
             }
             
             Section {
