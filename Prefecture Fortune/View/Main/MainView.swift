@@ -36,20 +36,40 @@ struct MainView: View {
                 } label: {
                     Text("Label.BloodType")
                 }
+                
+                Button(role: .destructive) {
+                    viewModel.resetInputs()
+                } label: {
+                    Text("Label.ResetInputs")
+                }
+                .disabled(viewModel.name.isEmpty)
             }
             
             Section {
-                Button {
-                    viewModel.fetchFortune()
-                } label: {
-                    HStack(spacing: 12) {
-                        Text("Button.TellFortune")
-                        
-                        if viewModel.isFetching {
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                        }
+                if viewModel.name.isEmpty {
+                    HStack {
+                        Spacer()
+                        Text("Label.EnterInformationForFortune")
+                        Spacer()
                     }
+                } else {
+                    Button {
+                        viewModel.fetchFortune()
+                    } label: {
+                        HStack(spacing: 12) {
+                            Spacer()
+                            Text("Button.TellFortune")
+                                .fontWeight(.semibold)
+                            if viewModel.isFetching {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            }
+                            Spacer()
+                        }
+                        .foregroundStyle(.white)
+                    }
+                    .listRowBackground(Color.blue)
+                    .buttonStyle(.borderedProminent)
                 }
             }
             

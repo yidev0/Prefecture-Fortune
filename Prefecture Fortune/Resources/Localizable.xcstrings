@@ -91,13 +91,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tell Fortune"
+            "value" : "Tell Prefecture Fortune"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "占う"
+            "state" : "needs_review",
+            "value" : "相性のいい都道府県を占う"
           }
         }
       }
@@ -162,6 +162,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "県民の日"
+          }
+        }
+      }
+    },
+    "Label.EnterInformationForFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter information to tell fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報を入力すると占いができます"
           }
         }
       }
@@ -242,6 +258,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "都道府県名"
+          }
+        }
+      }
+    },
+    "Label.ResetInputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Inputs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "入力情報をリセット"
           }
         }
       }
