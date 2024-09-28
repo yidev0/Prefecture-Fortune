@@ -166,6 +166,22 @@
         }
       }
     },
+    "Label.EnterInformationForFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter information to tell fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報を入力すると占いができます"
+          }
+        }
+      }
+    },
     "Label.FortuneResult" : {
       "localizations" : {
         "en" : {
@@ -242,6 +258,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "都道府県名"
+          }
+        }
+      }
+    },
+    "Label.ResetInputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Inputs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "入力情報をリセット"
           }
         }
       }
