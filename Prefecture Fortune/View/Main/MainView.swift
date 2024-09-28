@@ -9,11 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(MainViewModel.self) private var viewModel
+    @State private var viewModel = MainViewModel()
     
     var body: some View {
-        @State var viewModel = viewModel
-        
         Form {
             Section {
                 TextField("Label.Name", text: $viewModel.name)
