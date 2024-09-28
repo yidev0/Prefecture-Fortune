@@ -17,6 +17,16 @@
         }
       }
     },
+    "Date.%lld.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Date.%1$lld.%2$lld"
+          }
+        }
+      }
+    },
     "Label.Birthday" : {
       "localizations" : {
         "en" : {
@@ -49,6 +59,15 @@
         }
       }
     },
+    "Label.CapitalName" : {
+
+    },
+    "Label.CitizenDay" : {
+
+    },
+    "Label.HasCoastline" : {
+
+    },
     "Label.Name" : {
       "localizations" : {
         "en" : {
@@ -64,6 +83,15 @@
           }
         }
       }
+    },
+    "Label.No" : {
+
+    },
+    "Label.PrefectureName" : {
+
+    },
+    "Label.Yes" : {
+
     }
   },
   "version" : "1.0"

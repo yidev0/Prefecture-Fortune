@@ -14,7 +14,12 @@ struct MainView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Label.Name", text: $viewModel.name)
+                LabeledContent("Label.name") {
+                    TextField(
+                        "Label.Name",
+                        text: $viewModel.name
+                    )
+                }
                 
                 DatePicker(
                     selection: $viewModel.birthday,
@@ -34,9 +39,50 @@ struct MainView: View {
             
             Section {
                 Button {
-                    
+                    viewModel.fetchFortune()
                 } label: {
-                    Text("Button.TellFortune")
+                    HStack(spacing: 12) {
+                        Text("Button.TellFortune")
+                        
+                        if viewModel.isFetching {
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                    }
+                }
+            }
+            
+            if let result = viewModel.fortuneResult {
+                Section {
+                    LabeledContent("Label.PrefectureName") {
+                        Text(result.name)
+                    }
+                    
+                    LabeledContent("Label.CapitalName") {
+                        Text(result.name)
+                    }
+                    
+                    if let citizenDay = result.citizenDay {
+                        LabeledContent("Label.CitizenDay") {
+                            Text("Date.\(citizenDay.month).\(citizenDay.day)")
+                        }
+                    }
+                    
+                    LabeledContent("Label.HasCoastline") {
+                        Text(result.hasCoastLine ? "Label.Yes" : "Label.No")
+                    }
+                    
+                    AsyncImage(url: URL(string: result.logoUrl)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                    
+                    Text(result.brief)
+                        .foregroundStyle(.secondary)
                 }
             }
         }
