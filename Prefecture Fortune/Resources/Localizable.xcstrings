@@ -262,6 +262,22 @@
         }
       }
     },
+    "Label.OpenInMaps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Maps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップで開く"
+          }
+        }
+      }
+    },
     "Label.PrefectureName" : {
       "localizations" : {
         "en" : {

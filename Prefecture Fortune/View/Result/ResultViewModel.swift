@@ -54,4 +54,12 @@ class ResultViewModel {
             print("Location not found:", error as Any)
         }
     }
+    
+    func makeMapURL() -> URL? {
+        let baseURL = "https://maps.apple.com/maps?q=\(fortuneResult.name)"
+        if let encodedURL = baseURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            return URL(string: encodedURL)!
+        }
+        return nil
+    }
 }

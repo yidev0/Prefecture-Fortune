@@ -80,8 +80,14 @@ struct ResultView: View {
                         .padding(8)
                         .accessibilityLabel("Label.Reset")
                     }
+                    .listRowInsets(EdgeInsets())
+                    
+                    if let url = viewModel.makeMapURL() {
+                        Link(destination: url) {
+                            Text("Label.OpenInMaps")
+                        }
+                    }
                 }
-                .listRowInsets(EdgeInsets())
             }
             .navigationTitle("Label.FortuneResult")
             .navigationBarTitleDisplayMode(.inline)
