@@ -84,6 +84,8 @@ struct MainView: View {
                     
                     Text(result.brief)
                         .foregroundStyle(.secondary)
+                } header: {
+                    Text("Label.FortuneResult")
                 }
             }
         }
