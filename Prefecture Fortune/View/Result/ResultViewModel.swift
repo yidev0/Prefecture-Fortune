@@ -55,6 +55,14 @@ class ResultViewModel {
         }
     }
     
+    func makeWikiURL() -> URL? {
+        let baseURL = "https://wikipedia.org/wiki/\(fortuneResult.name)"
+        if let encodedURL = baseURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            return URL(string: encodedURL)!
+        }
+        return nil
+    }
+    
     func makeMapURL() -> URL? {
         let baseURL = "https://maps.apple.com/maps?q=\(fortuneResult.name)"
         if let encodedURL = baseURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {

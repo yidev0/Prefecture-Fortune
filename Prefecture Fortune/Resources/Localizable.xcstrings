@@ -167,7 +167,7 @@
       }
     },
     "Label.Close" : {
-        "localizations" : {
+      "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -278,6 +278,22 @@
         }
       }
     },
+    "Label.OpenWiki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wikipedia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wikipediaを開く"
+          }
+        }
+      }
+    },
     "Label.PrefectureName" : {
       "localizations" : {
         "en" : {
@@ -295,7 +311,7 @@
       }
     },
     "Label.Reset" : {
-        "localizations" : {
+      "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",

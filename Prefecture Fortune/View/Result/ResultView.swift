@@ -53,6 +53,12 @@ struct ResultView: View {
                     
                     Text(viewModel.fortuneResult.brief)
                         .foregroundStyle(.secondary)
+                    
+                    if let url = viewModel.makeWikiURL() {
+                        Link(destination: url) {
+                            Text("Label.OpenWiki")
+                        }
+                    }
                 }
                 
                 Section {
