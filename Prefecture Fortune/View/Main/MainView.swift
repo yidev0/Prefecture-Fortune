@@ -59,6 +59,9 @@ struct MainView: View {
         ) {
             Button("OK") {}
         }
+        .sheet(item: $viewModel.fortuneResult) { result in
+            ResultView(result: result)
+        }
     }
 }
 
