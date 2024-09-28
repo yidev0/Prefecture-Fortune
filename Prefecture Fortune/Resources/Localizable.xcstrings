@@ -166,6 +166,22 @@
         }
       }
     },
+    "Label.Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        }
+      }
+    },
     "Label.EnterInformationForFortune" : {
       "localizations" : {
         "en" : {
@@ -246,6 +262,38 @@
         }
       }
     },
+    "Label.OpenInMaps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Maps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップで開く"
+          }
+        }
+      }
+    },
+    "Label.OpenWiki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wikipedia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wikipediaを開く"
+          }
+        }
+      }
+    },
     "Label.PrefectureName" : {
       "localizations" : {
         "en" : {
@@ -262,6 +310,22 @@
         }
       }
     },
+    "Label.Reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
+          }
+        }
+      }
+    },
     "Label.ResetInputs" : {
       "localizations" : {
         "en" : {
@@ -272,7 +336,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "入力情報をリセット"
           }
         }
