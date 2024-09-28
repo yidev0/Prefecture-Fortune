@@ -14,6 +14,7 @@ struct Prefecture_FortuneApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: FortuneData.self)
         }
     }
     
