@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum AlertType: LocalizedError {
+    case emptyData
     case invalidData
     case networkError
     case serverError
@@ -17,6 +18,8 @@ enum AlertType: LocalizedError {
 extension AlertType {
     var errorDescription: String? {
         switch self {
+        case .emptyData:
+            "Alert.Title.EmptyData".localized
         case .invalidData:
             "Alert.Title.InvalidData".localized
         case .networkError:

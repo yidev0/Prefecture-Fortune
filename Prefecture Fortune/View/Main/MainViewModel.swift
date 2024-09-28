@@ -29,6 +29,11 @@ class MainViewModel {
     init() {}
     
     func fetchFortune() {
+        if name.isEmpty {
+            alertType = .emptyData
+            return
+        }
+        
         Task {
             isFetching = true
             let fortuneResponse = await FortuneAPIClient().fetchResponse(
