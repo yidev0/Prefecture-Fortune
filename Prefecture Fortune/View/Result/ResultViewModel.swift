@@ -28,7 +28,7 @@ class ResultViewModel {
                 self.cameraPosition = MapCameraPosition.region(
                     .init(
                         center: coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)
+                        span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
                     )
                 )
             } else {
