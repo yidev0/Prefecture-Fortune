@@ -65,7 +65,7 @@ struct MainView: View {
                     
                     if let citizenDay = result.citizenDay {
                         LabeledContent("Label.CitizenDay") {
-                            Text("Date.\(citizenDay.month).\(citizenDay.day)")
+                            Text(citizenDay.dateString)
                         }
                     }
                     
