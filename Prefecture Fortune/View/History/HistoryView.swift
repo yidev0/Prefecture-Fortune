@@ -20,17 +20,24 @@ struct HistoryView: View {
             return data.date
         }
         
-        List {
-            ForEach(groupedItems.keys.sorted(), id: \.self) { key in
-                Section {
-                    ForEach(groupedItems[key] ?? []) { item in
-                        HistoryCell(data: item)
+        if fortuneData.isEmpty {
+            ContentUnavailableView(
+                "Label.NoHistory",
+                systemImage: "clock.badge.xmark"
+            )
+        } else {
+            List {
+                ForEach(groupedItems.keys.sorted(), id: \.self) { key in
+                    Section {
+                        ForEach(groupedItems[key] ?? []) { item in
+                            HistoryCell(data: item)
+                        }
+                    } header: {
+                        Text(
+                            key,
+                            format: .dateTime.year().month().day().weekday()
+                        )
                     }
-                } header: {
-                    Text(
-                        key,
-                        format: .dateTime.year().month().day().weekday()
-                    )
                 }
             }
         }

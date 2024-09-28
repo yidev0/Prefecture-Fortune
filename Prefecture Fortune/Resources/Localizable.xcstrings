@@ -262,6 +262,22 @@
         }
       }
     },
+    "Label.NoHistory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No History "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "履歴がありません"
+          }
+        }
+      }
+    },
     "Label.OpenInMaps" : {
       "localizations" : {
         "en" : {
