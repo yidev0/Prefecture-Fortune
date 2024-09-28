@@ -22,7 +22,10 @@ struct FortuneAPIClient {
         guard let url = component?.url else {
             return .failure(.invalidURL)
         }
-        guard let httpBody = try? JSONEncoder().encode(requestBody) else {
+        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        guard let httpBody = try? encoder.encode(requestBody) else {
             return .failure(.invalidURL)
         }
         
@@ -42,13 +45,17 @@ struct FortuneAPIClient {
             }
             
             switch httpURLResponse.statusCode {
-            case 400:
+            case 200:
                 do {
-                    let fortuneResponse = try JSONDecoder().decode(FortuneResponse.self, from: data)
+                    let encoder = JSONDecoder()
+                    encoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let fortuneResponse = try encoder.decode(FortuneResponse.self, from: data)
                     return .success(fortuneResponse)
                 } catch {
                     return .failure(.invalidData)
                 }
+            case 400:
+                return .failure(.invalidData)
             case 500:
                 return .failure(.serverError)
             default:

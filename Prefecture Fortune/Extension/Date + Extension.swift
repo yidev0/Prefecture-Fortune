@@ -12,4 +12,12 @@ extension Date {
         let calendar = Calendar.current
         return calendar.component(component, from: self)
     }
+    
+    func toYearMonthDay() -> YearMonthDay {
+        return .init(
+            year: self.get(component: .year),
+            month: self.get(component: .month),
+            day: self.get(component: .day)
+        )
+    }
 }
