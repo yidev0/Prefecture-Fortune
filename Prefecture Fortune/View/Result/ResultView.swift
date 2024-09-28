@@ -85,6 +85,14 @@ struct ResultView: View {
             }
             .navigationTitle("Label.FortuneResult")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button {
+                    dismiss.callAsFunction()
+                } label: {
+                    Text("Label.Close")
+                }
+
+            }
             .task {
                 await viewModel.searchLocation()
                 await viewModel.searchCapital()
