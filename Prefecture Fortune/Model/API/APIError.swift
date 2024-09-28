@@ -9,4 +9,7 @@ enum APIClientError: Error {
     case invalidResponse
     case invalidData
     case invalidURL
+    case networkError
+    case serverError
+    case undefined(statusCode: Int)
 }
