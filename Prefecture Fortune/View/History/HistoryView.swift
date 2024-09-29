@@ -16,10 +16,6 @@ struct HistoryView: View {
     var fortuneData: [FortuneData]
     
     var body: some View {
-        let groupedItems = Dictionary(grouping: fortuneData) { data in
-            return data.date
-        }
-        
         if fortuneData.isEmpty {
             ContentUnavailableView(
                 "Label.NoHistory",
@@ -33,14 +29,23 @@ struct HistoryView: View {
                             HistoryCell(data: item)
                         }
                     } header: {
-                        Text(
-                            key,
-                            format: .dateTime.year().month().day().weekday()
-                        )
+                        Text(key)
                     }
                 }
             }
         }
+    }
+    
+    private var groupedItems: [String: [FortuneData]] {
+        Dictionary(grouping: fortuneData) { item in
+            formatDate(item.date)
+        }
+    }
+    
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
     }
 }
 
