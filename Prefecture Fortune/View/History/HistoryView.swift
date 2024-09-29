@@ -28,6 +28,7 @@ struct HistoryView: View {
                         ForEach(groupedItems[key] ?? []) { item in
                             HistoryCell(data: item)
                         }
+                        .onDelete(perform: deleteData(at:))
                     } header: {
                         Text(key)
                     }
@@ -46,6 +47,19 @@ struct HistoryView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: date)
+    }
+    
+    func deleteData(at offsets: IndexSet) {
+        for offset in offsets {
+            let data = fortuneData[offset]
+            context.delete(data)
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
 }
 
