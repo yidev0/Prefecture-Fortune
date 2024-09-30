@@ -19,15 +19,11 @@ struct BloodTypeEntity: AppEntity {
 }
 
 struct BloodTypeQuery: EntityQuery {
-    func entities(for identifiers: [String]) async throws -> [BloodTypeEntity] {
-        BloodType.allCases.map({ BloodTypeEntity(id: $0.rawValue) })
+    func entities(for identifiers: [String]) -> [BloodTypeEntity] {
+        return identifiers.map( { BloodTypeEntity(id: $0) })
     }
     
-    func suggestedEntities() async throws -> some ResultsCollection {
-        BloodType.allCases.map({ BloodTypeEntity(id: $0.rawValue) })
-    }
-    
-    func defaultResult() async -> DefaultValue? {
-        return .none
+    func suggestedEntities() -> [BloodTypeEntity] {
+        return BloodType.allCases.map({ BloodTypeEntity(id: $0.rawValue) })
     }
 }
