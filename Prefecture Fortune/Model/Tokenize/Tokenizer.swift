@@ -13,6 +13,7 @@ import NaturalLanguage
 struct Tokenizer {
 
     func detectLanguage(text: String) -> NLLanguage? {
+    func detectLanguage(from text: String) -> NLLanguage? {
         let recognizer = NLLanguageRecognizer()
         recognizer.processString(text)
         return recognizer.dominantLanguage
