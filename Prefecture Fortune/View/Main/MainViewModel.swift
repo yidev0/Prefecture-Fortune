@@ -90,5 +90,11 @@ class MainViewModel {
         )
         
         context.insert(newData)
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
 }

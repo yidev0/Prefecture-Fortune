@@ -10,8 +10,17 @@ import Foundation
 
 @Model
 final class FortuneData {
-    var request: FortuneRequest
-    var response: FortuneResponse
+    var name: String
+    var birthday: YearMonthDay
+    var bloodType: BloodType
+    
+    var prefectureName: String
+    var capital: String
+    var citizenDay: MonthDay?
+    var hasCoastLine: Bool
+    var logoUrl: String
+    var brief: String
+    
     var date: Date
     
     init(
@@ -19,8 +28,17 @@ final class FortuneData {
         response: FortuneResponse,
         date: Date
     ) {
-        self.request = request
-        self.response = response
+        self.name = request.name
+        self.birthday = request.birthday
+        self.bloodType = request.bloodType
+
+        self.prefectureName = response.name
+        self.capital = response.capital
+        self.citizenDay = response.citizenDay
+        self.hasCoastLine = response.hasCoastLine
+        self.logoUrl = response.logoUrl
+        self.brief = response.brief
+        
         self.date = date
     }
 }

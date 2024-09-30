@@ -13,12 +13,12 @@ struct HistoryCell: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(data.response.name)
+            Text(data.prefectureName)
                 .fontWeight(.semibold)
             
             HStack {
-                Text(data.request.name)
-                if let date = data.request.birthday.makeDate() {
+                Text(data.name)
+                if let date = data.birthday.makeDate() {
                     Text(date, format: .dateTime.year().month().day())
                 }
             }
