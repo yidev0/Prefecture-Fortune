@@ -11,8 +11,18 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        NavigationStack {
-            MainView()
+        TabView {
+            Tab {
+                MainView()
+            } label: {
+                Label("Tab.Fotune", systemImage: "sparkles")
+            }
+            
+            Tab {
+                HistoryView()
+            } label: {
+                Label("Tab.History", systemImage: "clock")
+            }
         }
     }
     
