@@ -13,7 +13,7 @@ struct Prefecture_FortuneTests {
     @Test func testDefaultAPICall() {
         Task {
             let fortuneAPIClient = FortuneAPIClient()
-            let result = try await fortuneAPIClient.fetchResponse(
+            let result = await fortuneAPIClient.fetchResponse(
                 reqeust: .sample
             )
             

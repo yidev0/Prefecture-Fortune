@@ -5,18 +5,15 @@
 //  Created by Yuto on 2024/09/24.
 //
 
-struct FortuneResponse: Codable {
+struct FortuneResponse: Codable, Identifiable {
+    var id: String { name }
+    
     let name: String
     let capital: String
     let citizenDay: MonthDay?
     let hasCoastLine: Bool
     let logoUrl: String
     let brief: String
-}
-
-struct MonthDay: Codable {
-    let month: Int
-    let day: Int
 }
 
 extension FortuneResponse {

@@ -11,7 +11,7 @@ struct FortuneAPIClient {
     
     let baseURL = URL(string: "https://ios-junior-engineer-codecheck.yumemi.jp")!
     
-    func fetchResponse(reqeust: FortuneRequest) async throws -> Result<FortuneResponse?, APIClientError> {
+    func fetchResponse(reqeust: FortuneRequest) async -> Result<FortuneResponse?, APIClientError> {
         let component = URLComponents(
             url: baseURL.appending(path: "/my_fortune"),
             resolvingAgainstBaseURL: true
@@ -22,7 +22,10 @@ struct FortuneAPIClient {
         guard let url = component?.url else {
             return .failure(.invalidURL)
         }
-        guard let httpBody = try? JSONEncoder().encode(requestBody) else {
+        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        guard let httpBody = try? encoder.encode(requestBody) else {
             return .failure(.invalidURL)
         }
         
@@ -41,15 +44,28 @@ struct FortuneAPIClient {
                 preconditionFailure()
             }
             
-            print(httpURLResponse.statusCode)
-            do {
-                let loginResponse = try JSONDecoder().decode(FortuneResponse.self, from: data)
-                return .success(loginResponse)
-            } catch {
-                return .failure(.invalidResponse)
+            switch httpURLResponse.statusCode {
+            case 200:
+                do {
+                    let encoder = JSONDecoder()
+                    encoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let fortuneResponse = try encoder.decode(FortuneResponse.self, from: data)
+                    return .success(fortuneResponse)
+                } catch {
+                    return .failure(.invalidData)
+                }
+            case 400:
+                return .failure(.invalidData)
+            case 500:
+                return .failure(.serverError)
+            default:
+                return .failure(.undefined(statusCode: httpURLResponse.statusCode))
             }
+            
+        } catch let error as NSError where error.domain == NSURLErrorDomain {
+            return .failure(.networkError)
         } catch {
-            return .failure(.invalidData)
+            return .failure(.invalidResponse)
         }
     }
     
