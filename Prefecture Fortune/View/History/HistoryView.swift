@@ -12,8 +12,10 @@ struct HistoryView: View {
     
     @Environment(\.modelContext) private var context
     
-    @Query(sort: \FortuneData.date, order: .reverse)
+    @Query(sort: \FortuneData.date)
     var fortuneData: [FortuneData]
+    
+    @State var viewModel = HistoryViewModel()
     
     var body: some View {
         if fortuneData.isEmpty {
@@ -23,30 +25,31 @@ struct HistoryView: View {
             )
         } else {
             List {
-                ForEach(Array(groupedItems.keys), id: \.self) { key in
+                ForEach(viewModel.sectionaizedData.keys.sorted(), id: \.self) { key in
                     Section {
-                        ForEach(groupedItems[key] ?? []) { item in
-                            HistoryCell(data: item)
+                        ForEach(viewModel.sectionaizedData[key] ?? []) { item in
+                            Button {
+                                viewModel.showSheet(for: item)
+                            } label: {
+                                HistoryCell(data: item)
+                            }
                         }
                         .onDelete(perform: deleteData(at:))
                     } header: {
-                        Text(key)
+                        Text(key, format: .dateTime.year().month().day())
                     }
                 }
             }
+            .sheet(item: $viewModel.fortuneResult) { result in
+                ResultView(result: result)
+            }
+            .onAppear {
+                viewModel.sectionzeData(data: fortuneData)
+            }
+            .onChange(of: fortuneData) { _, newValue in
+                viewModel.sectionzeData(data: newValue)
+            }
         }
-    }
-    
-    private var groupedItems: [String: [FortuneData]] {
-        Dictionary(grouping: fortuneData) { item in
-            formatDate(item.date)
-        }
-    }
-    
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: date)
     }
     
     func deleteData(at offsets: IndexSet) {

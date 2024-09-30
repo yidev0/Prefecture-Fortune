@@ -15,6 +15,7 @@ struct HistoryCell: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(data.prefectureName)
                 .fontWeight(.semibold)
+                .foregroundStyle(Color.primary)
             
             HStack {
                 Text(data.name)
@@ -23,7 +24,7 @@ struct HistoryCell: View {
                 }
             }
             .font(.callout)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.secondary)
         }
     }
 }
