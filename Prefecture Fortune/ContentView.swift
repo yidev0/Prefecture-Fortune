@@ -9,6 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
+    
 
     var body: some View {
         TabView {
@@ -24,6 +28,7 @@ struct ContentView: View {
                 Label("Tab.History", systemImage: "clock")
             }
         }
+        .tabViewStyle(.sidebarAdaptable)
     }
     
 }
