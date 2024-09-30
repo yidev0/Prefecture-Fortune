@@ -12,7 +12,7 @@ struct HistoryView: View {
     
     @Environment(\.modelContext) private var context
     
-    @Query
+    @Query(sort: \FortuneData.date, order: .reverse)
     var fortuneData: [FortuneData]
     
     var body: some View {
@@ -23,7 +23,7 @@ struct HistoryView: View {
             )
         } else {
             List {
-                ForEach(groupedItems.keys.sorted(), id: \.self) { key in
+                ForEach(Array(groupedItems.keys), id: \.self) { key in
                     Section {
                         ForEach(groupedItems[key] ?? []) { item in
                             HistoryCell(data: item)
