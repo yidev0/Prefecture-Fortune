@@ -12,7 +12,6 @@ import NaturalLanguage
 
 struct Tokenizer {
 
-    func detectLanguage(text: String) -> NLLanguage? {
     func detectLanguage(from text: String) -> NLLanguage? {
         let recognizer = NLLanguageRecognizer()
         recognizer.processString(text)
@@ -72,5 +71,25 @@ struct Tokenizer {
         }
         
         return name
+    }
+    
+    func extractDate(from text: String) -> Date? {
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue)
+            let range = NSRange(text.startIndex..<text.endIndex, in: text)
+            
+            var detectedDate: Date? = nil
+            detector.enumerateMatches(in: text, options: [], range: range) { match, _, stop in
+                if let match = match, let date = match.date {
+                    detectedDate = date
+                    stop.pointee = true
+                }
+            }
+            
+            return detectedDate
+        } catch {
+            print("Error creating NSDataDetector: \(error)")
+            return nil
+        }
     }
 }
