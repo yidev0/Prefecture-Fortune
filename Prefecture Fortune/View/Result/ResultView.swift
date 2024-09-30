@@ -18,6 +18,19 @@ struct ResultView: View {
         self.viewModel = .init(fortuneResult: result)
     }
     
+    init(data: FortuneData) {
+        self.viewModel = .init(
+            fortuneResult: .init(
+                name: data.prefectureName,
+                capital: data.capital,
+                citizenDay: data.citizenDay,
+                hasCoastLine: data.hasCoastLine,
+                logoUrl: data.logoUrl,
+                brief: data.brief
+            )
+        )
+    }
+    
     var body: some View {
         NavigationStack {
             Form {
