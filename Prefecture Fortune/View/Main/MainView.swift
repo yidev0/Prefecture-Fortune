@@ -87,6 +87,7 @@ struct MainView: View {
             .onChange(of: viewModel.fortuneResult?.id) {
                 viewModel.saveHistory(context: modelContext)
             }
+            .toolbarTitleDisplayMode(.inline)
         }
     }
 }

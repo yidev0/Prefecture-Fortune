@@ -18,36 +18,38 @@ struct HistoryView: View {
     @State var viewModel = HistoryViewModel()
     
     var body: some View {
-        if fortuneData.isEmpty {
-            ContentUnavailableView(
-                "Label.NoHistory",
-                systemImage: "clock.badge.xmark"
-            )
-        } else {
-            List {
-                ForEach(viewModel.sectionaizedData.keys.sorted(), id: \.self) { key in
-                    Section {
-                        ForEach(viewModel.sectionaizedData[key] ?? []) { item in
-                            Button {
-                                viewModel.showSheet(for: item)
-                            } label: {
-                                HistoryCell(data: item)
+        NavigationStack {
+            if fortuneData.isEmpty {
+                ContentUnavailableView(
+                    "Label.NoHistory",
+                    systemImage: "clock.badge.xmark"
+                )
+            } else {
+                List {
+                    ForEach(viewModel.sectionaizedData.keys.sorted(), id: \.self) { key in
+                        Section {
+                            ForEach(viewModel.sectionaizedData[key] ?? []) { item in
+                                Button {
+                                    viewModel.showSheet(for: item)
+                                } label: {
+                                    HistoryCell(data: item)
+                                }
                             }
+                            .onDelete(perform: deleteData(at:))
+                        } header: {
+                            Text(key, format: .dateTime.year().month().day())
                         }
-                        .onDelete(perform: deleteData(at:))
-                    } header: {
-                        Text(key, format: .dateTime.year().month().day())
                     }
                 }
-            }
-            .sheet(item: $viewModel.fortuneResult) { result in
-                ResultView(result: result)
-            }
-            .onAppear {
-                viewModel.sectionzeData(data: fortuneData)
-            }
-            .onChange(of: fortuneData) { _, newValue in
-                viewModel.sectionzeData(data: newValue)
+                .sheet(item: $viewModel.fortuneResult) { result in
+                    ResultView(result: result)
+                }
+                .onAppear {
+                    viewModel.sectionzeData(data: fortuneData)
+                }
+                .onChange(of: fortuneData) { _, newValue in
+                    viewModel.sectionzeData(data: newValue)
+                }
             }
         }
     }

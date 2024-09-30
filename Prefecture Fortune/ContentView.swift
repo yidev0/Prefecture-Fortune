@@ -46,6 +46,7 @@ struct ContentView: View {
                         } header: {
                             Text(key, format: .dateTime.year().month().day())
                         }
+                        .tabPlacement(.sidebarOnly)
                     }
                 } header: {
                     Label("Tab.History", systemImage: "clock")
