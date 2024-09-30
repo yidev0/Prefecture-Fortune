@@ -358,6 +358,22 @@
         }
       }
     },
+    "Label.TellFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tell Prefecture Fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相性のいい都道府県を占う"
+          }
+        }
+      }
+    },
     "Label.Yes" : {
       "localizations" : {
         "en" : {

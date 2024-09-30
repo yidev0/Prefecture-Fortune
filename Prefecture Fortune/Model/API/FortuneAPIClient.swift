@@ -11,7 +11,7 @@ struct FortuneAPIClient {
     
     let baseURL = URL(string: "https://ios-junior-engineer-codecheck.yumemi.jp")!
     
-    func fetchResponse(reqeust: FortuneRequest) async -> Result<FortuneResponse?, APIClientError> {
+    func fetchResponse(reqeust: FortuneRequest) async -> Result<FortuneResponse, APIClientError> {
         let component = URLComponents(
             url: baseURL.appending(path: "/my_fortune"),
             resolvingAgainstBaseURL: true
