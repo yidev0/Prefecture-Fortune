@@ -25,18 +25,6 @@ class HistoryViewModel {
     }
     
     func sectionzeData(data: [FortuneData]) {
-        sectionaizedData = Dictionary(
-            grouping: data
-        ) { item in
-            formatDate(item.date)
-        }
-    }
-    
-    func formatDate(_ date: Date) -> Date {
-        return .createDate(
-            year: date.get(component: .year),
-            month: date.get(component: .month),
-            day: date.get(component: .day)
-        )!
+        sectionaizedData = FortuneDataOrganizer().sectionze(data: data)
     }
 }

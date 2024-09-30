@@ -11,11 +11,25 @@ import MapKit
 struct ResultView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @State var viewModel: ResultViewModel
     
     init(result: FortuneResponse) {
         self.viewModel = .init(fortuneResult: result)
+    }
+    
+    init(data: FortuneData) {
+        self.viewModel = .init(
+            fortuneResult: .init(
+                name: data.prefectureName,
+                capital: data.capital,
+                citizenDay: data.citizenDay,
+                hasCoastLine: data.hasCoastLine,
+                logoUrl: data.logoUrl,
+                brief: data.brief
+            )
+        )
     }
     
     var body: some View {
@@ -46,6 +60,7 @@ struct ResultView: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 200)
                     } placeholder: {
                         ProgressView()
                             .progressViewStyle(.circular)
@@ -72,7 +87,7 @@ struct ResultView: View {
                             )
                         }
                     }
-                    .aspectRatio(1, contentMode: .fit)
+                    .aspectRatio(horizontalSizeClass == .compact ? 1.618:1.414, contentMode: .fit)
                     .overlay(alignment: .topTrailing) {
                         Button {
                             Task {
@@ -98,10 +113,12 @@ struct ResultView: View {
             .navigationTitle("Label.FortuneResult")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button {
-                    dismiss.callAsFunction()
-                } label: {
-                    Text("Label.Close")
+                if horizontalSizeClass == .compact {
+                    Button {
+                        dismiss.callAsFunction()
+                    } label: {
+                        Text("Label.Close")
+                    }
                 }
 
             }
