@@ -6,6 +6,7 @@
 //
 
 import AppIntents
+import SwiftData
 
 struct TellFortuneIntent: AppIntent {
     
@@ -36,6 +37,7 @@ struct TellFortuneIntent: AppIntent {
         
         switch fortuneResponse {
         case .success(let success):
+            await saveFortune(result: success)
             return .result(value: success.name)
         case .failure(let failure):
             switch failure {
@@ -48,6 +50,40 @@ struct TellFortuneIntent: AppIntent {
             case .undefined(statusCode: let statusCode):
                 throw AlertType.undefined(statusCode: statusCode)
             }
+        }
+    }
+    
+    @MainActor
+    private func saveFortune(result: FortuneResponse) {
+        let sharedModelContainer: ModelContainer = {
+            let schema = Schema([FortuneData.self])
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+            
+            do {
+                return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            } catch {
+                fatalError("Could not create ModelContainer: \(error)")
+            }
+        }()
+        
+        let fortuneData = FortuneData(
+            request: .init(
+                name: name,
+                birthday: .make(from: birthday),
+                bloodType: .init(rawValue: bloodType.id)!,
+                today: .today()
+            ),
+            response: result,
+            date: .now
+        )
+        
+        let context = sharedModelContainer.mainContext
+        context.insert(fortuneData)
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
         }
     }
     
