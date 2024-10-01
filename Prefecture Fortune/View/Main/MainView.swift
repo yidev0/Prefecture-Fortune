@@ -9,91 +9,85 @@ import SwiftUI
 
 struct MainView: View {
     
+    @Environment(\.modelContext) var modelContext
     @State private var viewModel = MainViewModel()
     
     var body: some View {
-        Form {
-            Section {
-                LabeledContent("Label.Name") {
-                    TextField(
-                        "Label.Name",
-                        text: $viewModel.name
-                    )
-                    .multilineTextAlignment(.trailing)
-                }
-                
-                DatePicker(
-                    selection: $viewModel.birthday,
-                    displayedComponents: .date
-                ) {
-                    Text("Label.Birthday")
-                }
-                
-                Picker(selection: $viewModel.bloodType) {
-                    ForEach(BloodType.allCases, id: \.self) { type in
-                        Text(type.rawValue)
-                    }
-                } label: {
-                    Text("Label.BloodType")
-                }
-            }
-            
-            Section {
-                Button {
-                    viewModel.fetchFortune()
-                } label: {
-                    HStack(spacing: 12) {
-                        Text("Button.TellFortune")
-                        
-                        if viewModel.isFetching {
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                        }
-                    }
-                }
-            }
-            
-            if let result = viewModel.fortuneResult {
+        NavigationStack {
+            Form {
                 Section {
-                    LabeledContent("Label.PrefectureName") {
-                        Text(result.name)
+                    LabeledContent("Label.Name") {
+                        TextField(
+                            "Label.Name",
+                            text: $viewModel.name
+                        )
+                        .multilineTextAlignment(.trailing)
                     }
                     
-                    LabeledContent("Label.CapitalName") {
-                        Text(result.name)
+                    DatePicker(
+                        selection: $viewModel.birthday,
+                        displayedComponents: .date
+                    ) {
+                        Text("Label.Birthday")
                     }
                     
-                    if let citizenDay = result.citizenDay {
-                        LabeledContent("Label.CitizenDay") {
-                            Text(citizenDay.dateString)
+                    Picker(selection: $viewModel.bloodType) {
+                        ForEach(BloodType.allCases, id: \.self) { type in
+                            Text(type.rawValue)
                         }
+                    } label: {
+                        Text("Label.BloodType")
                     }
                     
-                    LabeledContent("Label.HasCoastline") {
-                        Text(result.hasCoastLine ? "Label.Yes" : "Label.No")
+                    Button(role: .destructive) {
+                        viewModel.resetInputs()
+                    } label: {
+                        Text("Label.ResetInputs")
                     }
-                    
-                    AsyncImage(url: URL(string: result.logoUrl)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
-                            .progressViewStyle(.circular)
+                    .disabled(viewModel.name.isEmpty)
+                }
+                
+                Section {
+                    if viewModel.name.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("Label.EnterInformationForFortune")
+                            Spacer()
+                        }
+                    } else {
+                        Button {
+                            viewModel.fetchFortune()
+                        } label: {
+                            HStack(spacing: 12) {
+                                Spacer()
+                                Text("Button.TellFortune")
+                                    .fontWeight(.semibold)
+                                if viewModel.isFetching {
+                                    ProgressView()
+                                        .progressViewStyle(.circular)
+                                }
+                                Spacer()
+                            }
+                            .foregroundStyle(.white)
+                        }
+                        .listRowBackground(Color.blue)
+                        .buttonStyle(.borderedProminent)
                     }
-                    
-                    Text(result.brief)
-                        .foregroundStyle(.secondary)
-                } header: {
-                    Text("Label.FortuneResult")
                 }
             }
-        }
-        .alert(
-            isPresented: $viewModel.showAlert,
-            error: viewModel.alertType
-        ) {
-            Button("OK") {}
+            .alert(
+                isPresented: $viewModel.showAlert,
+                error: viewModel.alertType
+            ) {
+                Button("OK") {}
+            }
+            .sheet(item: $viewModel.fortuneResult) { result in
+                ResultView(result: result)
+            }
+            .onChange(of: viewModel.fortuneResult?.id) {
+                viewModel.saveHistory(context: modelContext)
+            }
+            .toolbarTitleDisplayMode(.inline)
         }
     }
 }

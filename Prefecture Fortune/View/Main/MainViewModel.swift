@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 class MainViewModel {
     // MARK: Inputs
     var name: String = ""
-    var birthday: Date = .now
+    var birthday: Date = .createDate(year: 2000, month: 1, day: 1)!
     var bloodType: BloodType = .a
     
     // MARK: Outputs
@@ -66,6 +67,34 @@ class MainViewModel {
                     alertType = .undefined(statusCode: statusCode)
                 }
             }
+        }
+    }
+    
+    func resetInputs() {
+        name = ""
+        birthday = .createDate(year: 2000, month: 1, day: 1)!
+    }
+    
+    func saveHistory(context: ModelContext) {
+        guard let fortuneResult else { return }
+        
+        let newData = FortuneData(
+            request: .init(
+                name: name,
+                birthday: birthday.toYearMonthDay(),
+                bloodType: bloodType,
+                today: .today()
+            ),
+            response: fortuneResult,
+            date: .now
+        )
+        
+        context.insert(newData)
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
         }
     }
 }

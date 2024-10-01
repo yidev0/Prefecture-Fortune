@@ -25,4 +25,8 @@ extension YearMonthDay {
             day: date.get(component: .day)
         )
     }
+    
+    func makeDate() -> Date? {
+        return Date.createDate(year: year, month: month, day: day)
+    }
 }

@@ -91,13 +91,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tell Fortune"
+            "value" : "Tell Prefecture Fortune"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "占う"
+            "state" : "needs_review",
+            "value" : "相性のいい都道府県を占う"
           }
         }
       }
@@ -166,6 +166,38 @@
         }
       }
     },
+    "Label.Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Label.EnterInformationForFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter information to tell fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報を入力すると占いができます"
+          }
+        }
+      }
+    },
     "Label.FortuneResult" : {
       "localizations" : {
         "en" : {
@@ -230,6 +262,54 @@
         }
       }
     },
+    "Label.NoHistory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No History "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "履歴がありません"
+          }
+        }
+      }
+    },
+    "Label.OpenInMaps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Maps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップで開く"
+          }
+        }
+      }
+    },
+    "Label.OpenWiki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wikipedia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wikipediaを開く"
+          }
+        }
+      }
+    },
     "Label.PrefectureName" : {
       "localizations" : {
         "en" : {
@@ -242,6 +322,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "都道府県名"
+          }
+        }
+      }
+    },
+    "Label.Reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
+          }
+        }
+      }
+    },
+    "Label.ResetInputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Inputs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力情報をリセット"
+          }
+        }
+      }
+    },
+    "Label.TellFortune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tell Prefecture Fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相性のいい都道府県を占う"
           }
         }
       }
@@ -268,6 +396,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "確認"
+          }
+        }
+      }
+    },
+    "Tab.Fotune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortune"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "占い"
+          }
+        }
+      }
+    },
+    "Tab.History" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴"
           }
         }
       }

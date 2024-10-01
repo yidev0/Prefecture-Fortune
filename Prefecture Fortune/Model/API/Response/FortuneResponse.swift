@@ -5,7 +5,13 @@
 //  Created by Yuto on 2024/09/24.
 //
 
-struct FortuneResponse: Codable {
+struct FortuneResponse: Codable, Identifiable, Equatable {
+    static func == (lhs: FortuneResponse, rhs: FortuneResponse) -> Bool {
+        lhs.name == rhs.name
+    }
+    
+    var id: String { name }
+    
     let name: String
     let capital: String
     let citizenDay: MonthDay?
